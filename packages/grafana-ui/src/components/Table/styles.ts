@@ -12,6 +12,7 @@ export const getTableStyles = stylesFactory((theme: GrafanaTheme) => {
   const lineHeight = theme.typography.lineHeight.md;
   const bodyFontSize = 14;
   const cellHeight = cellPadding * 2 + bodyFontSize * lineHeight;
+  // const cellHeight = 50;
   const rowHoverBg = styleMixins.hoverColor(theme.colors.bg1, theme);
   const lastChildExtraPadding = Math.max(getScrollbarWidth(), cellPadding);
 

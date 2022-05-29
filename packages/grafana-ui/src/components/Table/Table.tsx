@@ -167,13 +167,13 @@ export const Table: FC<Props> = memo((props: Props) => {
   );
 
   const { fields } = data;
-
   const RenderRow = React.useCallback(
     ({ index: rowIndex, style }) => {
       const row = rows[rowIndex];
       prepareRow(row);
       return (
-        <div {...row.getRowProps({ style })} className={tableStyles.row}>
+        // <div {...row.getRowProps({ style })} className={`${tableStyles.row} grafana-table-row`}>
+        <div style={{ width: row.getRowProps({ style }).style?.width }} className={`grafana-table-row`}>
           {row.cells.map((cell: Cell, index: number) => (
             <TableCell
               key={index}
@@ -195,7 +195,7 @@ export const Table: FC<Props> = memo((props: Props) => {
   const headerHeight = noHeader ? 0 : tableStyles.cellHeight;
 
   return (
-    <div {...getTableProps()} className={tableStyles.table} aria-label={ariaLabel}>
+    <div {...getTableProps()} className={`${tableStyles.table} grafana-table`} aria-label={ariaLabel}>
       <CustomScrollbar hideVerticalTrack={true}>
         <div style={{ width: `${totalColumnsWidth}px` }}>
           {!noHeader && (
@@ -203,7 +203,7 @@ export const Table: FC<Props> = memo((props: Props) => {
               {headerGroups.map((headerGroup: HeaderGroup) => {
                 const { key, ...headerGroupProps } = headerGroup.getHeaderGroupProps();
                 return (
-                  <div className={tableStyles.thead} {...headerGroupProps} key={key}>
+                  <div className={`grafana-table-header`} {...headerGroupProps} key={key}>
                     {headerGroup.headers.map((column: Column, index: number) =>
                       renderHeaderCell(column, tableStyles, data.fields[index])
                     )}
@@ -223,7 +223,7 @@ export const Table: FC<Props> = memo((props: Props) => {
               {RenderRow}
             </FixedSizeList>
           ) : (
-            <div style={{ height: height - headerHeight }} className={tableStyles.noData}>
+            <div style={{ height: height - headerHeight }} className={`${tableStyles.noData} grafana-table-no-data`}>
               No data to show
             </div>
           )}
@@ -237,21 +237,23 @@ Table.displayName = 'Table';
 
 function renderHeaderCell(column: any, tableStyles: TableStyles, field?: Field) {
   const headerProps = column.getHeaderProps();
-
+  console.log('headerProps: ', headerProps);
   if (column.canResize) {
     headerProps.style.userSelect = column.isResizing ? 'none' : 'auto'; // disables selecting text while resizing
   }
 
-  headerProps.style.position = 'absolute';
+  // headerProps.style.position = 'absolute';
+  headerProps.style.position = 'relative';
   headerProps.style.justifyContent = (column as any).justifyContent;
 
   return (
-    <div className={tableStyles.headerCell} {...headerProps}>
+    // <div className={`${tableStyles.headerCell} grafana-table-header-cell`} {...headerProps}>
+    <div className={`grafana-table-header-cell`} style={{ width: headerProps.style.width }}>
       {column.canSort && (
         <>
           <div
             {...column.getSortByToggleProps()}
-            className={tableStyles.headerCellLabel}
+            className={`${tableStyles.headerCellLabel} grafana-table-header-cell-label`}
             title={column.render('Header')}
           >
             <div>{column.render('Header')}</div>
@@ -264,7 +266,9 @@ function renderHeaderCell(column: any, tableStyles: TableStyles, field?: Field) 
       )}
       {!column.canSort && column.render('Header')}
       {!column.canSort && column.canFilter && <Filter column={column} tableStyles={tableStyles} field={field} />}
-      {column.canResize && <div {...column.getResizerProps()} className={tableStyles.resizeHandle} />}
+      {column.canResize && (
+        <div {...column.getResizerProps()} className={`${tableStyles.resizeHandle} grafana-table-resize-handle`} />
+      )}
     </div>
   );
 }

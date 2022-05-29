@@ -15,13 +15,13 @@ export const FilterActions: FC<TableCellProps> = ({ cell, field, tableStyles, on
   );
 
   return (
-    <div className={tableStyles.filterWrapper}>
-      <div className={tableStyles.filterItem}>
+    <div className={`${tableStyles.filterWrapper} grafana-table-filter-wrapper`}>
+      <div className={`${tableStyles.filterItem} grafana-table-filter-item`}>
         <Tooltip content="Filter for value" placement="top">
           <Icon name={'search-plus'} onClick={onFilterFor} />
         </Tooltip>
       </div>
-      <div className={tableStyles.filterItem}>
+      <div className={`${tableStyles.filterItem} grafana-table-filter-item`}>
         <Tooltip content="Filter out value" placement="top">
           <Icon name={'search-minus'} onClick={onFilterOut} />
         </Tooltip>

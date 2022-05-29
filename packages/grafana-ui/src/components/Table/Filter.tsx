@@ -28,7 +28,11 @@ export const Filter: FC<Props> = ({ column, field, tableStyles }) => {
 
   return (
     <span
-      className={cx(tableStyles.headerFilter, filterEnabled ? styles.filterIconEnabled : styles.filterIconDisabled)}
+      className={cx(
+        tableStyles.headerFilter,
+        'grafana-table-header-filter',
+        filterEnabled ? styles.filterIconEnabled : styles.filterIconDisabled
+      )}
       ref={ref}
       onClick={onShowPopover}
     >

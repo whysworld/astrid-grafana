@@ -25,10 +25,9 @@ export const TableCell: FC<Props> = ({
   dataRowIndex,
 }) => {
   const cellProps = cell.getCellProps();
-
-  if (!field.display) {
-    return null;
-  }
+  // if (!field.display) {
+  //   return null;
+  // }
 
   if (cellProps.style) {
     cellProps.style.minWidth = cellProps.style.width;
@@ -65,7 +64,13 @@ export const TableCell: FC<Props> = ({
     innerWidth,
   });
   return link ? (
-    <a href={link.href} onClick={onClick} target={link.target} title={link.title} className={tableStyles.cellLink}>
+    <a
+      href={link.href}
+      onClick={onClick}
+      target={link.target}
+      title={link.title}
+      className={`${tableStyles.cellLink} grafana-table-cell-link`}
+    >
       {renderedCell}
     </a>
   ) : (

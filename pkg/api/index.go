@@ -311,6 +311,31 @@ func (hs *HTTPServer) getNavTree(c *models.ReqContext, hasEditPerm bool) ([]*dto
 		})
 	}
 
+	customChildNavs := []*dtos.NavLink{
+		{
+			Text: "Tom",
+			Id: "user-tom",
+			Url: setting.AppSubUrl + "/user/Tom",
+			Icon: "user",
+		},
+		{
+			Text: "Bill",
+			Id: "user-bill",
+			Url: setting.AppSubUrl + "/user/Bill",
+			Icon: "user",
+		},
+	}
+
+	navTree = append(navTree, &dtos.NavLink{
+		Text:       "Users",
+		SubTitle:   "My users",
+		Id:         "users",
+		Icon:       "user",
+		Url:        setting.AppSubUrl + "/user",
+		Children:   customChildNavs,
+		SortWeight: dtos.WeightAdmin,
+	})
+
 	helpVersion := fmt.Sprintf(`%s v%s (%s)`, setting.ApplicationName, setting.BuildVersion, setting.BuildCommit)
 	if hs.Cfg.AnonymousHideVersion && !c.IsSignedIn {
 		helpVersion = setting.ApplicationName

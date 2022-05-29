@@ -578,6 +578,13 @@ export function setupAngularRoutes($routeProvider: route.IRouteProvider, $locati
       //@ts-ignore
       pageClass: 'page-alerting',
     })
+    .when('/user/Tom', {
+      template: '<react-container />',
+      reloadOnSearch: false,
+      resolve: {
+        component: () => SafeDynamicImport(import(/* webpackChunkName: "Tom" */ 'app/features/customs/Tom')),
+      },
+    })
     .otherwise({
       template: '<react-container />',
       resolve: {

@@ -29,9 +29,9 @@ export const JSONViewCell: FC<TableCellProps> = (props) => {
   const content = <JSONTooltip value={value} />;
 
   return (
-    <div {...cellProps} className={tableStyles.cellContainer}>
+    <div {...cellProps} className={`${tableStyles.cellContainer} grafana-table-cell-container`}>
       <Tooltip placement="auto" content={content} theme="info-alt">
-        <div className={cx(tableStyles.cellText, txt)}>{displayValue}</div>
+        <div className={cx(tableStyles.cellText, 'grafana-table-cell-text', txt)}>{displayValue}</div>
       </Tooltip>
     </div>
   );

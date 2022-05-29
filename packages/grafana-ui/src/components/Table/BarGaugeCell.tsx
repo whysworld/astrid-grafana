@@ -38,7 +38,7 @@ export const BarGaugeCell: FC<TableCellProps> = (props) => {
   }
 
   return (
-    <div {...cellProps} className={tableStyles.cellContainer}>
+    <div {...cellProps} className={`${tableStyles.cellContainer} grafana-table-cell-container`}>
       <BarGauge
         width={innerWidth}
         height={tableStyles.cellHeightInner}
