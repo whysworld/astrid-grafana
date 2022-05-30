@@ -98,6 +98,7 @@ $height-lg: ${theme.height.lg};
 
 $font-family-sans-serif: ${theme.typography.fontFamily.sansSerif};
 $font-family-monospace: ${theme.typography.fontFamily.monospace};
+$font-family-source-sans-pro: SourceSansPro;
 
 $font-size-base: ${theme.typography.size.base} !default;
 

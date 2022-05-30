@@ -391,4 +391,22 @@ $vertical-resize-handle-dots-hover: $gray-2;
 // Calendar
 $calendar-bg-days: $white;
 $calendar-bg-now: $gray-6;
+
+//Showcase
+$showcase-bg: #ffffff;
+$showcase-border-color: #d6d6d6;
+$showcase-selected-bg: #17bebb;
+$showcase-title-color: #00a09e;
+$showcase-title-font-size: 19px;
+$showcase-item-font-size: 32px;
+$showcase-item-first-color: #3cba0d;
+$showcase-item-second-color: #fc6666;
+
+//Table
+$grafana-table-bg: #fff;
+$grafana-table-border-color: #d6d6d6;
+$grafana-table-cell-text-color: #474747;
+$grafana-table-row-hover: #e5f2ff;
+$grafana-table-title-color: #00a09e;
+$grafana-table-title-wrapper-bg: #fbfdff;
 `;
