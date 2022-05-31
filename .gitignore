@@ -14,7 +14,7 @@ awsconfig
 /e2e/tmp
 .yarnrc
 .yarn/
-vendor/
+# vendor/
 /docs/menu.yaml
 
 # Enterprise emails
